@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // es5
+        function test () {
+            console.log("吃饭啦");
+        }
+        test();
+
+        // es6  
+        const test1 = (x,y) =>{
+            return x * y;
+        }
+        console.log(test1(10,50));
+    
+    // 当一个 参数可以省略() , 但不建议
+        const test2 = x => {
+            return x;
+        }
+        console.log(test2(60));
+
+        // 当函数体只有一句代码块，可以省略（） {}
+        const test3 = name => console.log(name) ;
+        test3("听损失扣");
+
+      
+    //   const full = ({first, last}) => first + " " + last;
+
+    //   function full (person) {
+    //     return person.first + " " + person.last;
+    //   }
+
+        const test5 = {
+            name: '听听',
+            eat: (what)=>{
+                console.log(this);   // 指向window
+                console.log("听扣扣扣扣扣");
+            }
+        }
+        test5.eat("太好吃了");
+
+        // 可以给默认值   如果没有赋值给 生效默认值
+       function test6 (a= 18, b){
+           a = a || 3,
+           b = b || 6
+           return a + b;
+       }
+
+       console.log(test6());
+
+       // es5
+       var result = values.sort(function(a,b){
+            return a - b;
+       });
+       
+       // es6
+       var result = values.sort((a,b)=>a-b);
+
+    </script>
+</body>
+</html>

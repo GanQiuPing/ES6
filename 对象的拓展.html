@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(foo + ": " + bar);
+
+            // 对象属性名 和 值 一样，可以简写简写n
+            function fn() {
+                const name = "线策划部"
+                return {
+                    name
+                };
+            }
+            console.log(fn());
+
+
+            // 对象中函数的 简写
+            var obj = {
+                // print:function(name){
+                //     console.log(name);
+                // }
+
+                // es6
+                print(name) {
+                    console.log(name);
+                }
+            }
+            obj.print("kru kru kru ");
+
+
+            let obj1 = {
+                first: 'hello',
+                last: 'word'
+            }
+            let {first: f,last: l}=obj1
+            console.log(f,l);
+
+            // 对象中的 Key 可以简写
+            const varName = "aaa"
+            const obj2 = {
+                name: "李四",
+                // [varName]: "王五"
+            }
+            console.log(obj2)
+    </script>
+</body>
+</html>

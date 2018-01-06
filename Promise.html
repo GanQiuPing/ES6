@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.  创建 Promise 对象
+        const promise = new Promise(function(resolve, reject){
+            const value = Math.random();
+            const result = value > 0.5;
+            // 定义一个计时器
+            setTimeout(function() {
+                if(result){
+                    resolve("。。。正确的值");
+                }else {
+                    reject("。。。失败的值");
+                }
+            }, 2000);
+        });
+
+        // 2. 通过 promise 的 then 方法拿结果
+        promise.then(correct=>{
+            // 正确的结果
+            console.log(correct);
+        },err => {
+            // 失败的结果
+            console.log(err);
+        })
+
+        // 如果不想写 err， 在后面可以 用 catch来捕捉错误
+        promise.then(correct => {
+            // 正确的结果
+            console.log(correct);
+        }).catch(err=>{
+            // 失败结果
+            console.log(err);
+        });
+    </script>
+</body>
+</html>

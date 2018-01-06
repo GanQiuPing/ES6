@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        可以看到里面有一个constructor方法，这就是构造方法，而this关键字则代表实例对象。
+        也就是说，ES5 的构造函数Point，对应 ES6 的Point类的构造方法。
+        */
+
+        // 定义 动物类
+        class Animal {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            // 测试了 用不了里面的 x,y ?
+            toString() {
+                console.log("您好呀");
+                return '(' + this.x + ', ' + this.y + ')';
+            }
+            eat() {
+                console.log(`${this.x}: ${this.y}`);
+            }
+
+            // 静态方法  static
+            static sleep() {
+                console.log("。。。小动物 在睡觉哦");
+            }
+        }
+
+
+        // 通过 new 关键字 来创建
+        const anima = new Animal(50, 90);
+        anima.toString();
+
+        // 通过 对象调用 实例方法
+        anima.eat();
+
+        // 通过 类名 调用 静态方法
+        Animal.sleep();
+
+        anima.hasOwnProperty('x'); // true
+        anima.hasOwnProperty('eat');  //false
+
+
+        class B {}
+        let b = new B();
+        b.constructor === B.prototype.console;
+        console.log(b.constructor === B.prototype.constructor);
+    </script>
+</body>
+
+</html>

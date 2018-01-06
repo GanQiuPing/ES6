@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+// 用于获取函数的多余参数，这样就不需要使用arguments对象了。
+// rest 参数搭配的变量是一个数组，该变量将多余的参数放入数组中。
+        function add (...value) {
+            let sum = 0;
+            for(var val of value){
+                sum += val;
+            }
+            return sum;
+        }
+        console.log(add(2,4,6));
+
+        // rest 参数代替arguments变量的例子。
+        function sortNumbers() {
+            return Array.prototype.slice.call(arguments).sort();
+        }
+        console.log(sortNumbers(55,65,8,2));
+
+        /*
+        arguments对象不是数组，而是一个类似数组的对象。
+        所以为了使用数组的方法，必须使用Array.prototype.slice.call先将其转为数组。
+        rest 参数就不存在这个问题，它就是一个真正的数组，数组特有的方法都可以使用。
+        */
+        const sortNumber = (...numbers) =>numbers.sort();
+        console.log(sortNumber(62,3,555,96,2));
+
+        // ...rest参数 比argument 更加灵活,因为它可以选择性的存储后面几个值
+        // 比如说 前面有参数, ...参数  必须放在形参最后
+        let arr = [33,56,7,687,85,90,65];
+        // let [a,b,...c] = arr;
+        // console.log(a,b,c);
+
+        let [,b,,c,,,d] = arr;
+        console.log(b,c,d);  // 56,687,65
+
+        let arr1 = [34,65,76];
+        let arr2 = [74,88,56];
+        let arr3 = [...arr1,...arr2];
+        console.log(arr3);
+
+        
+    </script>
+</body>
+</html>

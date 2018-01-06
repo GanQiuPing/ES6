@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let names = ["小轩", "小轩轩", "大转轩", "加油轩"];
+        //for ... in 
+        for (let i in names) {
+            console.log(i)
+            // console.log(names[name])
+        }
+
+
+        // for...of
+        for (const name of names) {
+            // console.log(name);
+        }
+
+        // Array.from 能将其转为数组    ["s", "m", "i", "l", "e"]
+       console.log( Array.from('smile'));
+
+
+        // 不使用循环情况下写出一个值与下标相同，长度为100的数组
+        console.log(Array.from(new Array(100),(val,index) => index));
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .Popup-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none
+        }
+
+        .Popup {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -100px;
+            display: none;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="Popup">模态框</div>
+    <div class="Popup-backdrop"></div>
+
+    <button class="btn">点击我吧</button>
+
+    <script>
+       
+    //    深拷贝 和 浅拷贝
+       var cloneObj = function(obj){
+            var str, newObj = obj.constructor === Array ? [] : {} ;
+            // 判断 如果不是  object 类型
+            if(typeof obj != 'object'){
+                return;
+            }else if(window.JSON){
+                str = JSON.stringify(obj); // 系列化对象
+                newObj = JSON.parse(str);  //还原
+            }else {
+                for(var i in obj){
+                    newObj[i] = typeof obj[i] === 'object' ? cloneObj([obj[i]]): obj[i];
+                }
+            }
+            return newObj;
+       }
+       
+
+
+        //点击显示模态框 
+        // var btn = document.querySelector('button');
+        // btn.addEventListener('click',function(){ 
+        //  document.querySelector('.Popup ').style.display = "block";
+        //  document.querySelector('.Popup-backdrop').style.display = "block";
+        // })
+
+
+        // 深拷贝，浅拷贝
+        var china = {
+            nation: '中国',
+            birthplaces: ['北京', '上海', '广州'],
+            skincolr: 'yellow',
+            friends: ['sk', 'ls']
+        }
+        //深复制，要想达到深复制就需要用递归
+        function deepCopy(o, c) {
+            var c = c || {}
+            for (var i in o) {
+                if (typeof o[i] === 'object') {
+                    //要考虑深复制问题了
+                    if (o[i].constructor === Array) {
+                        //这是数组
+                        c[i] = []
+                    } else {
+                        //这是对象
+                        c[i] = {}
+                    }
+                    deepCopy(o[i], c[i])
+                } else {
+                    c[i] = o[i]
+                }
+            }
+            return c
+        }
+        var result = {
+            name: 'result'
+        }
+        result = deepCopy(china, result)
+        console.dir(result)
+    </script>
+
+
+
+
+</body>
+
+</html>

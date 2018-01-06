@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 使用 promise 封装耗时操作
+        function promiseTimeOut(time, str) {
+            var promise = new Promise((yes, no) =>{
+                setTimeout(()=>{
+                    yes(str);
+                }, time)
+            })
+            return promise
+        }
+
+       function  getName (name) {
+            return name
+        }
+
+        // async: 使异步更方便操作
+        async function printAsync() {
+            const result1 = await promiseTimeOut(2000, '....第一层');
+            console.log(result1);
+
+            const result2 = await getName('小轩轩轩');
+            console.log(result2);
+
+            const result3 = await promiseTimeOut(2000, '....第三层');
+            console.log(result3);
+
+            const result4 = await promiseTimeOut(2000, '....第四层');
+            console.log(result4);
+        }
+
+        // 调用异步函数
+        printAsync();
+    </script>
+</body>
+</html>
